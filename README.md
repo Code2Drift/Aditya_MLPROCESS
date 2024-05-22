@@ -1,0 +1,1 @@
+This is an exercise repository for loan default prediction (dataset: https://www.kaggle.com/datasets/laotse/credit-risk-dataset). Main goal of this exercise is to understand classification problem & familiarize with working in a datascience environment. 
