@@ -1,13 +1,11 @@
 ## inital setting
 data_source:
 
-  raw_file: "E:\\01_Programming\\Py\\Aditya_MLPROCESS\\data\\00_raw\\credit_risk_dataset.csv"
-  
-  column_names    : ""
+  raw_file: "../data/00_raw/credit_risk_dataset.csv"
+
+  target_col    : "loan_status"
   
   drop_columns    : ""
-  
-  target_name     : ""
   
   test_size       : ""
   
