@@ -21,14 +21,16 @@ data_source:
 
 pickle_path:
 
-  X_train         : "E:/01_Programming/Py/Aditya_MLPROCESS/01_interim/X_train.pkl"
+  X_train         : "E:\01_Programming\Py\Aditya_MLPROCESS\data\01_interim\X_train.pkl"
 
-  X_test         : "E:/01_Programming/Py/Aditya_MLPROCESS/01_interim/X_test.pkl"
+  X_test         : "E:\01_Programming\Py\Aditya_MLPROCESS\data\01_interim\X_test.pkl"
 
-  X_valid         : "E:/01_Programming/Py/Aditya_MLPROCESS/01_interim/X_valid.pkl"
+  X_valid         : "E:\01_Programming\Py\Aditya_MLPROCESS\data\01_interim\X_valid.pkl"
 
-  y_train         : "E:/01_Programming/Py/Aditya_MLPROCESS/01_interim/y_train.pkl"
+  y_train         : "E:\01_Programming\Py\Aditya_MLPROCESS\data\01_interim\y_train.pkl"
 
-  y_test         : "E:/01_Programming/Py/Aditya_MLPROCESS/01_interim/y_test.pkl"
+  y_test         : "E:\01_Programming\Py\Aditya_MLPROCESS\data\01_interim\y_test.pkl"
 
-  y_valid         : "E:/01_Programming/Py/Aditya_MLPROCESS/01_interim/y_valid.pkl"
+  y_valid         : "E:\01_Programming\Py\Aditya_MLPROCESS\data\01_interim\y_valid.pkl"
+
+
