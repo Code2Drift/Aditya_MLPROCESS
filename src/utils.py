@@ -129,5 +129,51 @@ def drop_duplicate_data(X_data: pd.DataFrame, y_data: pd.Series):
 
     return X, y
 
+def median_imputation(data: pd.DataFrame, subset_data: pd.DataFrame, fit):
+
+    if not isinstance(data, pd.DataFrame):
+        raise RuntimeError("Fungsi median_imputation: parameter data haruslah bertipe DataFrame!")
+
+    if fit == True:
+        if not isinstance(subset_data, list):
+            raise RuntimeError(
+                "Fungsi median_imputation: untuk nilai parameter fit = True, subset_data harus bertipe list dan berisi daftar nama kolom yang ingin dicari nilai mediannya guna menjadi data imputasi pada kolom tersebut.")
+    elif fit == False:
+        if not isinstance(subset_data, dict):
+            raise RuntimeError(
+                "Fungsi median_imputation: untuk nilai parameter fit = False, subset_data harus bertipe dict dan berisi key yang merupakan nama kolom beserta value yang merupakan nilai median dari kolom tersebut.")
+    else:
+        raise RuntimeError(
+            "Fungsi median_imputation: parameter fit haruslah bertipe boolean, bernilai True atau False.")
+
+    print("Fungsi median_imputation: parameter telah divalidasi.")
+
+    # Copy data
+    data = data.copy()
+    subset_data = deepcopy(subset_data)
+
+    # Percabangan berdasarkan nilai fit
+    if fit:
+        imputation_data = {}
+        for subset in subset_data:
+            median_value = data[subset].median()
+            imputation_data[subset] = median_value
+        print(f"Fungsi median_imputation: proses fitting telah selesai, berikut hasilnya {imputation_data}.")
+        return imputation_data
+    else:
+        print("Fungsi median_imputation: informasi count na sebelum dilakukan imputasi:")
+        print(data.isna().sum())
+        print("")
+
+        data.fillna(subset_data, inplace=True)
+
+        print("Fungsi median_imputation: informasi count na setelah dilakukan imputasi:")
+        print(data.isna().sum())
+        print("")
+
+        return data
+
+
+
 
 
