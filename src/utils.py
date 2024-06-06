@@ -96,3 +96,38 @@ def percent_missing_values(dataframe):
         # calculate percentage of missing per colum
         percentage_missing = (missing_values / len(dataframe)) * 100
         print(f"{round(percentage_missing, 2)}% missing values of {col}") ; print("")
+
+def drop_duplicate_data(X_data: pd.DataFrame, y_data: pd.Series):
+    """
+    Delete duplicates from X and Y
+    :param X_data: Dataframe of input features
+    :param y_data: Series of target columns
+
+    :return:
+    pd.DataFrame, Series: cleaned features and target columns
+    """
+    ## input validation
+    if not isinstance(X_data, pd.DataFrame):
+        raise ValueError("X_data has to be a DataFrame!")
+    if not isinstance(y_data, pd.Series):
+        raise ValueError("y_data has to be a DataFrame!")
+    print("drop_duplicate_data: Parameters have been validated")
+
+    X = X_data.copy() ; y = y_data.copy()
+    print(f"\ndrop_duplicate_data: data shape before dropping : {X_data.shape}")
+
+    X_duplicate = X[X.duplicated()]
+    print(f"\ndrop_duplicate_data: duplicated data have the following shape : {X_duplicate.shape}")
+
+    X_clean = (X.shape[0] - X_duplicate.shape[0], X.shape[1])
+    print(f"\ndrop_duplicate_data: data shape have after dropping should be : {X_clean}")
+
+    X.drop_duplicates(inplace=True)
+    y = y.loc[X.index]
+
+    print(f"\nData shape after dropping duplicates are: {X.shape}")
+
+    return X, y
+
+
+
