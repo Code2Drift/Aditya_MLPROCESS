@@ -43,6 +43,20 @@ encoding_path:
 
   record_default  : "E:/01_Programming/Py/Aditya_MLPROCESS/models/ohe_default_on_file.pkl"
 
+processed_files:
+
+  X_train: "E:/01_Programming/Py/Aditya_MLPROCESS/data/02_processed/X_train_prep.pkl"
+
+  X_test: "E:/01_Programming/Py/Aditya_MLPROCESS/data/02_processed/X_test_prep.pkl"
+
+  X_valid: "E:/01_Programming/Py/Aditya_MLPROCESS/data/02_processed/X_valid_prep.pkl"
+
+  y_train: "E:/01_Programming/Py/Aditya_MLPROCESS/data/02_processed/y_train_prep.pkl"
+
+  y_test: "E:/01_Programming/Py/Aditya_MLPROCESS/data/02_processed/y_test_prep.pkl"
+
+  y_valid: "E:/01_Programming/Py/Aditya_MLPROCESS/data/02_processed/y_valid_prep.pkl"
+
 
 
 
