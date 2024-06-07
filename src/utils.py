@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 import joblib
 import pickle
 from copy import deepcopy
+from sklearn.preprocessing import OneHotEncoder
 
 def load_data(fname: pd.DataFrame):
     """
@@ -172,6 +173,71 @@ def median_imputation(data: pd.DataFrame, subset_data: pd.DataFrame, fit):
         print("")
 
         return data
+
+def create_onehot_encoder(categories: list, path: str):
+    if not isinstance(categories, list):
+        raise RuntimeError("create_onehot_encoder: params should have list as type!")
+
+    if not isinstance(path, str):
+        raise RuntimeError("create_onehot_encoder: params should have str as type!")
+
+    ohe = OneHotEncoder(sparse_output=False)
+
+    cat_array = np.array(categories).reshape(-1,1)
+    ohe.fit(cat_array)
+
+    serialize_data(ohe, path)
+
+    learned_categories = ohe.categories_[0].tolist()
+    print(f"Fitted Categories are: {learned_categories}")
+
+    return ohe
+
+
+def ohe_transform(dataset: pd.DataFrame, subset: str, prefix: str, ohe: OneHotEncoder):
+    if not isinstance(dataset, pd.DataFrame):
+        raise RuntimeError("ohe_transform: params should have DataFrame as type!")
+
+    if not isinstance(ohe, OneHotEncoder):
+        raise RuntimeError("ohe_transform: params should have OneHotEncoder as type!")
+
+    if not isinstance(prefix, str):
+        raise RuntimeError("ohe_transform: params should have str as type!")
+
+    if not isinstance(subset, str):
+        raise RuntimeError("ohe_transform: params should have str as type!")
+
+    try:
+        _ = dataset.columns.tolist().index(subset)
+    except ValueError:
+        raise RuntimeError(
+            "ohe_transform: params subset is str, but data is not found on dataset columns!"
+            )
+
+    print("ohe_transform: params have been validated.")
+
+    ## copy data
+    dataset = dataset.copy()
+    print(f"\nohe_transform: The list of column names before coding is {list(dataset.columns)}.")
+
+    # Membuat nama kolom yang telah dikodekan
+    col_names = [f"{prefix}_{col_name}" for col_name in ohe.categories_[0].tolist()]
+
+    # Proses pengkodean
+    encoded = pd.DataFrame(
+        ohe.transform(dataset[[subset]]),
+        columns=col_names,
+        index=dataset.index
+    )
+
+    dataset = pd.concat([dataset, encoded], axis=1)
+    dataset.drop(columns=[subset], inplace=True)
+
+    # Print nama kolom setelah pengkodean
+    print(f"\nohe_transform: The list of column names after coding is {list(dataset.columns)}.")
+
+    return dataset
+
 
 
 

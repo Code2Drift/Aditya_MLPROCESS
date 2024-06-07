@@ -33,4 +33,18 @@ pickle_path:
 
   y_valid         : "E:/01_Programming/Py/Aditya_MLPROCESS/data/01_interim/y_valid.pkl"
 
+encoding_path:
+
+  home_owner      : "E:/01_Programming/Py/Aditya_MLPROCESS/models/ohe_home_ownership.pkl"
+
+  loan_intent     : "E:/01_Programming/Py/Aditya_MLPROCESS/models/ohe_loan_intent.pkl"
+
+  loan_grade      : "E:/01_Programming/Py/Aditya_MLPROCESS/models/ohe_loan_grade.pkl"
+
+  record_default  : "E:/01_Programming/Py/Aditya_MLPROCESS/models/ohe_default_on_file.pkl"
+
+
+
+
+
 
