@@ -57,6 +57,11 @@ processed_files:
 
   y_valid: "E:/01_Programming/Py/Aditya_MLPROCESS/data/02_processed/y_valid_prep.pkl"
 
+ROS_file:
+
+  X_train: "E:/01_Programming/Py/Aditya_MLPROCESS/data/02_processed/X_train_ros.pkl"
+
+  y_train: "E:/01_Programming/Py/Aditya_MLPROCESS/data/02_processed/y_train_ros.pkl"
 
 
 
